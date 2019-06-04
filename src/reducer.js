@@ -14,7 +14,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case REHYDRATE: { // Handle rehydrating with custom shallow merge.
 
       if (action.payload && action.payload.offline) {
-        return { ...state, ...action.payload.offline };
+        return { ...state, {...action.payload.offline,isConnected:state.isConnected}};
       }
 
       return state
